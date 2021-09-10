@@ -1,21 +1,88 @@
 body {
     background-color: #F2B705;
-
-}
-
-div {
+      overflow: hidden;
+  }
+  
+  div {
     position: relative;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    margin-top: 30%;
-}
-
-button {
-    background-color: #F25040;
+    margin-top: 10px;
+  }
+  
+  #airplane {
+      position: relative;
+      width: 142px;
+      left: 38%;
+      right: -10.53%;
+      top: -20px;
+      margin-bottom: 2px;
+      transform: rotate(20deg);
+  }
+  
+  #logo {
+      width: 200px;
+      margin-bottom: 3rem;
+  }
+  
+  #welcome{
+      font-family: 'Merriweather Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: white;;
+      margin-bottom: 5px;
+  }
+  
+  #passport {
+      position: relative;
+      width: 64.45px;
+      right: 44%;
+      transform: rotate(-25deg);
+      margin-bottom: 2rem;
+  }
+  
+  button {
     border-radius: 15px;
     height: 2rem;
-    width: 10rem;
+    width: 210px;
     margin: 18px;
-}
+      font-family: 'Merriweather Sans', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 1px;
+  }
+  
+  #btnRegister, #btnLogin {
+      background-color: #F25040;
+      border-color: none;
+      border-style: none;
+      color: white;
+  }
+  
+  #btnGoogle {
+      
+      background-image: url(https://firebasestorage.googleapis.com/v0/b/social-network-ba343.appspot.com/o/logoGoogle.png?alt=media&token=c12b90cb-33ad-4629-aec5-9eaff5dacb2f);
+      background-repeat: no-repeat;
+      background-position: left;
+      left: 20%;
+      padding-left: 2rem;
+      vertical-align: center;
+      background-color: #F9F9F9;
+      border-color: #C8C8C8;
+      border-style: solid;
+      color: #6D6D6D;
+  }
+  
+  #labelO {
+      color: #737373;
+      font-size: 20px;
+      font-family: 'Merriweather Sans', sans-serif;
+      font-weight: 500;
+  }
+  
+  #pathway {
+      position: relative;
+      width: 50%;
+  }
