@@ -1,60 +1,59 @@
 body {
-    background-color: #F2B705;
-      overflow: hidden;
-  }
-  
-  div {
-    position: relative;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  #airplane {
-      position: relative;
-      width: 142px;
-      left: 38%;
-      right: -10.53%;
-      top: -20px;
-      margin-bottom: 2px;
-      transform: rotate(20deg);
-  }
-  
-  #logo {
-      width: 200px;
-      margin-bottom: 3rem;
-  }
-  
-  #welcome{
-      font-family: 'Merriweather Sans', sans-serif;
-      font-size: 21px;
-      font-weight: 500;
-      color: white;;
-      margin-bottom: 5px;
-  }
-  
-  #passport {
-      position: relative;
-      width: 64.45px;
-      right: 44%;
-      transform: rotate(-25deg);
-      margin-bottom: 2rem;
-  }
-  
-  button {
-    border-radius: 15px;
-    height: 2rem;
-    width: 210px;
-    margin: 18px;
-      font-family: 'Merriweather Sans', sans-serif;
-      font-weight: 500;
-      font-size: 13px;
-      letter-spacing: 1px;
-  }
-  
-  #btnRegister, #btnLogin {
+	overflow-x: hidden;
+}
+
+div {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#airplane {
+	position: relative;
+	width: 142px;
+	left: 55%;
+	right: -10.53%;
+	top: -20px;
+	margin-bottom: 2px;
+	transform: rotate(20deg);
+}
+
+#logo {
+	width: 200px;
+	margin-bottom: 3rem;
+}
+
+#welcome{
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 21px;
+	font-weight: 500;
+	color: white;;
+	margin-bottom: 5px;
+}
+
+#passport {
+	position: relative;
+	width: 64.45px;
+	right: 65%;
+	transform: rotate(-25deg);
+	margin-bottom: 2rem;
+}
+
+button {
+  border-radius: 15px;
+  height: 2rem;
+  width: 210px;
+  margin: 18px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 1px;
+}
+
+#btnRegister, #btnLogin {
 	background-color: #F25040;
 	border-color: none;
 	border-style: none;
@@ -95,4 +94,12 @@ body {
 	right: 40px;
 	top: 148px;
 	opacity: 0.7;
+}
+
+#divUp {
+  background-color: #F2B705;
+}
+
+#divDown {
+  background-color: #ffffff;
 }

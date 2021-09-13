@@ -4,7 +4,13 @@ import { registerUser } from '../firebase.js';
 import firebase, { auth } from '../secret.js';
 
 export const Register = () => {
+  document.body.style.backgroundColor = '#ffffff';
   const Homediv = document.createElement('div');
+  Homediv.id = 'homediv';
+
+  const containerDiv = document.createElement('div');
+  containerDiv.id = 'containerForm';
+
   const buttonHome = document.createElement('button');
   buttonHome.textContent = 'Regresar';
 
@@ -106,29 +112,20 @@ export const Register = () => {
     const passwordConfirm = Homediv.querySelector('#inputConfirm').value;
     e.preventDefault();
     console.log(registerUser);
+
     if (passwordRegister !== passwordConfirm) {
       labelPassword.style.display = 'block';
-    } else if (inputEmail.type !== 'email') {
-      labelEmail.style.display = 'block';
     } else {
       registerUser(emailRegister, passwordRegister);
       onNavigate('/login');
     }
   });
 
-  Homediv.appendChild(buttonHome);
-  Homediv.appendChild(labelRegister);
-  Homediv.appendChild(labelSubtitle);
-  Homediv.appendChild(inputUsername);
-  Homediv.appendChild(inputEmail);
-  Homediv.appendChild(labelEmail);
-  Homediv.appendChild(inputPassword);
-  Homediv.appendChild(labelPassword);
-  Homediv.appendChild(eyeOn);
-  Homediv.appendChild(eyeOff);
-  Homediv.appendChild(inputPasswordConfirm);
-  Homediv.appendChild(buttonRegister);
-  Homediv.appendChild(buttonGoogleRegister);
+  Homediv.append(buttonHome, labelRegister, labelSubtitle);
+  Homediv.appendChild(containerDiv);
+  containerDiv.append(inputUsername,
+    inputEmail, labelEmail, inputPassword, labelPassword, eyeOn, eyeOff,
+    inputPasswordConfirm, buttonRegister, buttonGoogleRegister);
 
   return Homediv;
 };
