@@ -26,7 +26,7 @@ div {
 	margin-bottom: 3rem;
 }
 
-#welcome{
+#welcome {
 	font-family: 'Merriweather Sans', sans-serif;
 	font-size: 21px;
 	font-weight: 500;
@@ -42,15 +42,29 @@ div {
 	margin-bottom: 2rem;
 }
 
+.divButtons {
+	background-color: white;
+}
+
 button {
   border-radius: 15px;
   height: 2rem;
-  width: 210px;
-  margin: 18px;
 	font-family: 'Merriweather Sans', sans-serif;
 	font-weight: 500;
 	font-size: 13px;
 	letter-spacing: 1px;
+	margin: 18px;
+}
+
+.buttonBack {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/arrow1.png?alt=media&token=2bd8d990-8d6d-4302-82f6-bd7a0980bd6f);
+	background-repeat: no-repeat;
+	position: relative;
+	width: 50px;
+	border-color: none;
+	border-style: none;
+	background-color: white;
+	right: 38%;
 }
 
 #btnRegister, #btnLogin {
@@ -58,19 +72,44 @@ button {
 	border-color: none;
 	border-style: none;
 	color: white;
+	width: 210px;
+}
+
+#buttonRegister, #buttonLogin {
+	position: relative;
+	background-color: #F25040;
+	border-color: none;
+	border-style: none;
+	color: white;
+	width: 105px;
+	left: 27%;
 }
 
 #btnGoogle {
-	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/logoGoogle.png?alt=media&token=558171fa-a3a2-485d-8ee0-14a5493ec4d3);
-	background-repeat: no-repeat;
-	background-position: left;
-	left: 20%;
-	padding-left: 2rem;
 	vertical-align: center;
-	background-color: #F9F9F9;
-	border-color: #C8C8C8;
-	border-style: solid;
+	background-color: #ffffff;
+	border: 1px solid #C8C8C8;
 	color: #6D6D6D;
+	width: 210px;
+	padding-left: 2rem;
+}
+
+.imgGoogle {
+	position: absolute;
+	left: 13%;
+	top: 187px;
+}
+
+.imgGoogleLog {
+	position: absolute;
+	left: 22%;
+	top: 230px;
+}
+
+.imgGoogleReg {
+	position: absolute;
+	left: 21%;
+	top: 331px;
 }
 
 #labelO {
@@ -80,26 +119,91 @@ button {
 	font-weight: 500;
 }
 
-#eyeOff {
+#eyeOff, #eyeOn {
 	position: absolute;
-	width: 1rem;
-	right: 40px;
-	top: 148px;
-	opacity: 0.7;
+	width: 20px;
+	right: 50px;
+	top: 135px;
+	opacity: 0.6;
 }
 
-#eyeOn {
+#eyeOffLogin, #eyeOnLogin {
 	position: absolute;
-	width: 1rem;
-	right: 40px;
-	top: 148px;
-	opacity: 0.7;
+	width: 20px;
+	right: 50px;
+	top: 82px;
+	opacity: 0.6;
 }
 
-#divUp {
-  background-color: #F2B705;
+#labelRegister {
+	font-family: 'Bowlby One', cursive;
+	font-size: 28px;
+	position: relative;
+	right: 28px;
+	top: 50px;
+	color: #F25040;
 }
 
-#divDown {
-  background-color: #ffffff;
+.labelLogin {
+	font-family: 'Bowlby One', cursive;
+	font-size: 28px;
+	position: relative;
+	left: -2%;
+	top: 50px;
+	color: #F25040;
+}
+
+#labelSub, .subLabel {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-style: italic;
+	font-weight: 400;
+	font-size: 21px;
+	color: #6D6D6D;
+	letter-spacing: 1px;
+	position: relative;
+	top: 45px;
+	right: 8%;
+	margin-bottom: 40px;
+}
+
+.labelErr {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	color: #F25040;
+}
+
+.divFormRegister, .divLogin {
+	border: 1px solid #E3E3E3;
+	border-radius: 15px;
+	box-sizing: border-box;
+	box-shadow: 0 0 15px #e4e4e4;
+	padding: 37px;
+	top: 40px;
+}
+
+input {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #F25040;
+	margin-bottom: 32px;
+	width: 230px;
+}
+
+input::placeholder {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #AEAEAE;
+	letter-spacing: .5px;
+}
+
+.postBox {
+	border: 1px solid #E3E3E3;
+	border-radius: 15px;
+	box-sizing: border-box;
+	box-shadow: 0 0 15px #e4e4e4;
+	padding: 37px;
+	top: 40px;
 }

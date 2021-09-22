@@ -1,18 +1,17 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../main.js';
-import { registerUser } from '../firebase.js';
-import firebase, { auth } from '../secret.js';
+// eslint-disable-next-line import/no-cycle
+import { authGoogle, registerUser } from '../firebase.js';
+// eslint-disable-next-line import/no-cycle
+import { ErrorValidate } from '../../utils/errorValidate.js';
 
 export const Register = () => {
   document.body.style.backgroundColor = '#ffffff';
   const Homediv = document.createElement('div');
-  Homediv.id = 'homediv';
-
-  const containerDiv = document.createElement('div');
-  containerDiv.id = 'containerForm';
+  Homediv.classList.add('homediv');
 
   const buttonHome = document.createElement('button');
-  buttonHome.textContent = 'Regresar';
+  buttonHome.classList.add('buttonBack');
 
   const labelRegister = document.createElement('label');
   labelRegister.textContent = 'Regístrate';
@@ -22,30 +21,26 @@ export const Register = () => {
   labelSubtitle.textContent = 'Inicia la aventura';
   labelSubtitle.id = 'labelSub';
 
+  const divFormRegister = document.createElement('div');
+  divFormRegister.classList.add('divFormRegister');
+
   const inputUsername = document.createElement('input');
   inputUsername.setAttribute('type', 'text');
   inputUsername.placeholder = 'Nombre de usuario';
   inputUsername.id = 'inputUsername';
+  inputUsername.required = true;
 
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('type', 'email');
   inputEmail.placeholder = 'Correo electrónico';
   inputEmail.id = 'inputEmail';
-
-  const labelEmail = document.createElement('label');
-  labelEmail.textContent = 'El correo no es un formato valido';
-  labelEmail.id = 'labelEmail';
-  labelEmail.style.display = 'none';
+  inputEmail.required = true;
 
   const inputPassword = document.createElement('input');
   inputPassword.setAttribute('type', 'password');
   inputPassword.placeholder = 'Contraseña';
   inputPassword.id = 'inputPassword';
-
-  const labelPassword = document.createElement('label');
-  labelPassword.textContent = 'Las contraseñas no coinciden';
-  labelPassword.id = 'labelPass';
-  labelPassword.style.display = 'none';
+  inputPassword.required = true;
 
   const eyeOff = document.createElement('img');
   eyeOff.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/outline_visibility_off_black_24dp.png?alt=media&token=981cfa55-bea9-47cb-a710-c27509e22066');
@@ -61,22 +56,32 @@ export const Register = () => {
   inputPasswordConfirm.setAttribute('type', 'password');
   inputPasswordConfirm.placeholder = 'Confirmación';
   inputPasswordConfirm.id = 'inputConfirm';
+  inputPasswordConfirm.required = true;
 
   const buttonRegister = document.createElement('button');
   buttonRegister.setAttribute('type', 'submit');
   buttonRegister.id = 'buttonRegister';
   buttonRegister.textContent = 'Regístrate';
 
+  const labelErr = document.createElement('label');
+  labelErr.classList.add('labelErr');
+
   const buttonGoogleRegister = document.createElement('button');
   buttonGoogleRegister.textContent = 'Registrarse con Google';
-  buttonGoogleRegister.id = 'btnGoogleRegister';
+  buttonGoogleRegister.id = 'btnGoogle';
+
+  const imgGoogle = document.createElement('img');
+  imgGoogle.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/logoGoogle.png?alt=media&token=558171fa-a3a2-485d-8ee0-14a5493ec4d3');
+  imgGoogle.classList.add('imgGoogleReg');
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
 
   eyeOff.addEventListener('click', () => {
     const passwordValue = Homediv.querySelector('#inputPassword');
+    const passwordConfirmValue = Homediv.querySelector('#inputConfirm');
     if (passwordValue.type === 'password') {
       passwordValue.type = 'text';
+      passwordConfirmValue.type = 'text';
       eyeOff.style.display = 'none';
       eyeOn.style.display = 'block';
     }
@@ -84,48 +89,41 @@ export const Register = () => {
 
   eyeOn.addEventListener('click', () => {
     const passwordValue = Homediv.querySelector('#inputPassword');
+    const passwordConfirmValue = Homediv.querySelector('#inputConfirm');
     if (passwordValue.type === 'text') {
       passwordValue.type = 'password';
+      passwordConfirmValue.type = 'password';
       eyeOff.style.display = 'block';
       eyeOn.style.display = 'none';
     }
   });
 
-  buttonGoogleRegister.addEventListener('click', (e) => {
-    e.preventDefault();
-    // eslint-disable-next-line import/no-named-as-default-member
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log(result);
-        onNavigate('/wall');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  buttonGoogleRegister.addEventListener('click', () => {
+    authGoogle(onNavigate);
   });
 
   buttonRegister.addEventListener('click', (e) => {
+    e.preventDefault();
     const emailRegister = Homediv.querySelector('#inputEmail').value;
     const passwordRegister = Homediv.querySelector('#inputPassword').value;
-    const passwordConfirm = Homediv.querySelector('#inputConfirm').value;
-    e.preventDefault();
-    console.log(registerUser);
-
-    if (passwordRegister !== passwordConfirm) {
-      labelPassword.style.display = 'block';
-    } else {
-      registerUser(emailRegister, passwordRegister);
-      onNavigate('/login');
-    }
+    registerUser(emailRegister, passwordRegister)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        userCredential.user.updateProfile({ displayName: document.getElementById('inputUsername').value });
+        alert('Registro exitoso');
+        onNavigate('/login');
+      })
+      .catch((error) => {
+        console.log(error);
+        labelErr.innerText = ErrorValidate(error.code);
+      });
   });
 
   Homediv.append(buttonHome, labelRegister, labelSubtitle);
-  Homediv.appendChild(containerDiv);
-  containerDiv.append(inputUsername,
-    inputEmail, labelEmail, inputPassword, labelPassword, eyeOn, eyeOff,
-    inputPasswordConfirm, buttonRegister, buttonGoogleRegister);
+  Homediv.appendChild(divFormRegister);
+  divFormRegister.append(inputUsername, inputEmail, inputPassword, eyeOn,
+    eyeOff, inputPasswordConfirm, buttonRegister, buttonGoogleRegister, imgGoogle, labelErr);
 
   return Homediv;
 };

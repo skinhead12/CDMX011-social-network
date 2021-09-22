@@ -1,10 +1,11 @@
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../main.js';
-import { auth } from '../secret.js';
+// eslint-disable-next-line import/no-cycle
+import { authGoogle } from '../firebase.js';
 
 export const Home = () => {
+  document.body.style.backgroundColor = '#F2B705';
   const Homediv = document.createElement('div');
-  Homediv.id = 'divUp';
 
   const airplane = document.createElement('img');
   airplane.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/avion.png?alt=media&token=1719248f-44c5-4d22-b32b-664e31992608');
@@ -23,8 +24,8 @@ export const Home = () => {
   passport.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/passport.png?alt=media&token=bd477459-fe1f-4c31-9b2b-33cd4692d145');
   passport.id = 'passport';
 
-  const whiteDiv = document.createElement('div');
-  whiteDiv.id = 'divDown';
+  const divButtons = document.createElement('div');
+  divButtons.classList.add('divButtons');
 
   const buttonRegister = document.createElement('button');
   buttonRegister.textContent = 'Regístrate';
@@ -42,25 +43,19 @@ export const Home = () => {
   buttonGoogle.textContent = 'Continuar con Google';
   buttonGoogle.id = 'btnGoogle';
 
+  const imgGoogle = document.createElement('img');
+  imgGoogle.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/logoGoogle.png?alt=media&token=558171fa-a3a2-485d-8ee0-14a5493ec4d3');
+  imgGoogle.classList.add('imgGoogle');
+
   buttonRegister.addEventListener('click', () => onNavigate('/register'));
   buttonLogin.addEventListener('click', () => onNavigate('/login'));
-  buttonGoogle.addEventListener('click', (e) => {
-    e.preventDefault();
-    const provider = new firebase.auth.GoogleAuthProvider();
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        console.log(result);
-        onNavigate('/wall');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  buttonGoogle.addEventListener('click', () => {
+    authGoogle(onNavigate);
   });
 
   Homediv.append(airplane, logo, labelWelcome, passport);
-  Homediv.appendChild(whiteDiv);
-  whiteDiv.append(buttonRegister, buttonLogin, labelOr, buttonGoogle);
+  Homediv.appendChild(divButtons);
+  divButtons.append(buttonRegister, buttonLogin, labelOr, buttonGoogle, imgGoogle);
 
   return Homediv;
 };
