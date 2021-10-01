@@ -107,8 +107,9 @@ export const loadPosts = async () => {
           const btnsSave = divPost.querySelectorAll('.btnSave');
           btnsSave.forEach((btn) => {
             btn.addEventListener('click', () => {
-              updatePost(pruebaTres.post);
-              console.log(pruebaTres.post);
+              const newPost = updatePost(pruebaTres.post);
+              divPost.querySelector('.areaPost').value = newPost;
+              console.log(newPost);
             });
           });
         });
