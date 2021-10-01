@@ -106,18 +106,19 @@ export const Register = () => {
     e.preventDefault();
     const emailRegister = Homediv.querySelector('#inputEmail').value;
     const passwordRegister = Homediv.querySelector('#inputPassword').value;
-    registerUser(emailRegister, passwordRegister)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        userCredential.user.updateProfile({ displayName: document.getElementById('inputUsername').value });
-        alert('Registro exitoso');
-        onNavigate('/login');
-      })
-      .catch((error) => {
-        console.log(error);
-        labelErr.innerText = ErrorValidate(error.code);
-      });
+    const passwordConfirm = Homediv.querySelector('#inputConfirm').value;
+    const validate = (passwordRegister !== passwordConfirm)
+      ? labelErr.textContent = 'Las contraseñas no coinciden'
+      : registerUser(emailRegister, passwordRegister)
+        .then((userCredential) => {
+          userCredential.user.updateProfile({ displayName: document.getElementById('inputUsername').value });
+          alert('Registro exitoso');
+          onNavigate('/login');
+        })
+        .catch((error) => {
+          labelErr.innerText = ErrorValidate(error.code);
+        });
+    return validate;
   });
 
   Homediv.append(buttonHome, labelRegister, labelSubtitle);

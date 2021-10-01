@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { deletePost, onGetPost, editPost } from '../lib/firebase.js';
+import { deletePost, onGetPost, getUser, updatePost, editPost,
+} from '../lib/firebase.js';
 
 export const divPostP = document.createElement('div');
 divPostP.classList.add('divPostP');
@@ -21,16 +22,33 @@ export const loadPosts = async () => {
       const areaPost = document.createElement('p');
       areaPost.classList.add('areaPost');
       areaPost.textContent = contentPost.post;
+      areaPost.style.display = 'block';
+
+      const editArea = document.createElement('textarea');
+      editArea.classList.add('editArea');
+      editArea.style.display = 'none';
+      editArea.textContent = contentPost.post;
+
+      const divBtns = document.createElement('div');
+      divBtns.classList.add('divBtns');
+
+      const like = document.createElement('button');
+      like.textContent = 'like';
+
+      const btnSave = document.createElement('button');
+      btnSave.classList.add('btnSave');
+      btnSave.textContent = 'Guardar';
+      btnSave.style.display = 'none';
 
       const btnDelete = document.createElement('button');
       btnDelete.classList.add('btnDelete');
       btnDelete.textContent = 'Eliminar';
       btnDelete.dataset.id = contentPost.id;
 
-      const btnUpdate = document.createElement('button');
-      btnUpdate.classList.add('btnUpdate');
-      btnUpdate.textContent = 'Editar';
-      btnUpdate.dataset.id = contentPost.id;
+      const btnEdit = document.createElement('button');
+      btnEdit.classList.add('btnEdit');
+      btnEdit.textContent = 'Editar';
+      btnEdit.dataset.id = contentPost.id;
 
       const modalContainer = document.createElement('div');
       modalContainer.classList.add('modalContainer');
@@ -48,7 +66,8 @@ export const loadPosts = async () => {
       btnMsgCancel.textContent = 'Cancelar';
 
       divPostP.append(divPost);
-      divPost.append(postUsername, areaPost, btnDelete, modalContainer, btnUpdate);
+      divPost.append(postUsername, areaPost, editArea, divBtns,modalContainer);
+      divBtns.append(like, btnDelete, btnEdit, btnSave);
       modalContainer.appendChild(modal);
       modal.append(msgDelete, btnMsgDelete, btnMsgCancel);
       /*     const btnsDelete = divPosts.querySelectorAll('.btnDelete');
@@ -76,13 +95,28 @@ export const loadPosts = async () => {
           });
         });
       });
-      const btnsEdit = divPost.querySelectorAll('.btnUpdate');
+      const btnsEdit = divPost.querySelectorAll('.btnEdit');
       btnsEdit.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          const back = editPost(e.target.dataset.id);
-          console.log(back);
+        btn.addEventListener('click', () => {
+          areaPost.style.display = 'none';
+          editArea.style.display = 'block';
+          btnSave.style.display = 'block';
+          btnEdit.style.display = 'none';
+          const pruebaTres = editPost(contentPost.post);
+          console.log(pruebaTres);
+          const btnsSave = divPost.querySelectorAll('.btnSave');
+          btnsSave.forEach((btn) => {
+            btn.addEventListener('click', () => {
+              updatePost(pruebaTres.post);
+              console.log(pruebaTres.post);
+            });
+          });
         });
       });
+      if (contentPost.username !== getUser().displayName) {
+        btnDelete.style.display = 'none';
+        btnEdit.style.display = 'none';
+      }
     });
   });
 };
