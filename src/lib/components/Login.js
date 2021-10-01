@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { loginUser } from '../firebase.js';
+import { loginUser, userPersistence } from '../firebase.js';
 // eslint-disable-next-line import/no-cycle
 import { onNavigate } from '../../main.js';
 import { ErrorValidate } from '../../utils/errorValidate.js';
@@ -9,6 +9,10 @@ export const Login = () => {
   const Homediv = document.createElement('div');
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonBack');
+
+  const imgPin = document.createElement('img');
+  imgPin.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/img-pin-blur.png?alt=media&token=0d881422-8e25-4f68-aa97-60a6061bcf44');
+  imgPin.classList.add('imgPin');
 
   const labelLogin = document.createElement('label');
   labelLogin.textContent = 'Inicia sesión';
@@ -52,7 +56,7 @@ export const Login = () => {
   imgGoogle.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/logoGoogle.png?alt=media&token=558171fa-a3a2-485d-8ee0-14a5493ec4d3');
   imgGoogle.classList.add('imgGoogleLog');
 
-	const labelErr = document.createElement('label');
+  const labelErr = document.createElement('label');
   labelErr.classList.add('labelErr');
 
   buttonHome.addEventListener('click', () => onNavigate('/'));
@@ -76,23 +80,26 @@ export const Login = () => {
 
   buttonLogin.addEventListener('click', (e) => {
     e.preventDefault();
-    const usernameLogin = Homediv.querySelector('#emailLogin').value;
+    const emailLogin = Homediv.querySelector('#emailLogin').value;
     const passwordLogin = Homediv.querySelector('#passLogin').value;
-    loginUser(usernameLogin, passwordLogin)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-        console.log(user.displayName);
-        onNavigate('/wall');
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        labelErr.innerText = ErrorValidate(error.code);
-      });
+    userPersistence()
+      .then((() => loginUser(emailLogin, passwordLogin)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+          onNavigate('/wall');
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          labelErr.innerText = ErrorValidate(error.code);
+        })
+        .catch((error) => {
+          console.log('Persistance failed');
+        })));
   });
 
-  Homediv.append(buttonHome, labelLogin, subLabel, divFormLogin);
+  Homediv.append(buttonHome, imgPin, labelLogin, subLabel, divFormLogin);
   divFormLogin.append(username, password, eyeOff, eyeOn,
     buttonLogin, buttonGoogle, imgGoogle, labelErr);
 
