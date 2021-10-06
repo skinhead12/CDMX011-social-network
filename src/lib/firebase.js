@@ -45,7 +45,7 @@ export const getPosts = () => db.collection('posts').get();
 
 export const editPost = (id) => db.collection('posts').doc(id).get(); // obtener de nuevo los datos para editar
 
-export const updatePost = (id) => db.collection('posts').doc(id).update(); // actualizar posts
+export const updatePost = (id, updatePost) => db.collection('posts').doc(id).update(updatePost); // actualizar posts
 
 export const onGetPost = (callback) => db.collection('posts').onSnapshot(callback); // obtener datos tiempo real
 

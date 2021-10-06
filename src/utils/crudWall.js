@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { deletePost, onGetPost, getUser, updatePost, editPost,
+import {
+  deletePost, onGetPost, getUser, updatePost,
 } from '../lib/firebase.js';
 
 export const divPostP = document.createElement('div');
@@ -32,8 +33,13 @@ export const loadPosts = async () => {
       const divBtns = document.createElement('div');
       divBtns.classList.add('divBtns');
 
+      const labelCount = document.createElement('label');
+      labelCount.textContent = 0;
+      labelCount.classList.add('labelCount');
+
       const like = document.createElement('button');
       like.textContent = 'like';
+      like.classList.add('like');
 
       const btnSave = document.createElement('button');
       btnSave.classList.add('btnSave');
@@ -66,8 +72,8 @@ export const loadPosts = async () => {
       btnMsgCancel.textContent = 'Cancelar';
 
       divPostP.append(divPost);
-      divPost.append(postUsername, areaPost, editArea, divBtns,modalContainer);
-      divBtns.append(like, btnDelete, btnEdit, btnSave);
+      divPost.append(postUsername, areaPost, editArea, divBtns, modalContainer);
+      divBtns.append(labelCount, like, btnDelete, btnEdit, btnSave);
       modalContainer.appendChild(modal);
       modal.append(msgDelete, btnMsgDelete, btnMsgCancel);
       /*     const btnsDelete = divPosts.querySelectorAll('.btnDelete');
@@ -97,23 +103,43 @@ export const loadPosts = async () => {
       });
       const btnsEdit = divPost.querySelectorAll('.btnEdit');
       btnsEdit.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          console.log(e.target.dataset.id);
           areaPost.style.display = 'none';
           editArea.style.display = 'block';
           btnSave.style.display = 'block';
+          btnDelete.style.display = 'none';
           btnEdit.style.display = 'none';
-          const pruebaTres = editPost(contentPost.post);
-          console.log(pruebaTres);
-          const btnsSave = divPost.querySelectorAll('.btnSave');
-          btnsSave.forEach((btn) => {
-            btn.addEventListener('click', () => {
-              const newPost = updatePost(pruebaTres.post);
-              divPost.querySelector('.areaPost').value = newPost;
-              console.log(newPost);
-            });
-          });
+          like.style.display = 'none';
         });
       });
+
+      const btnsSave = divPost.querySelectorAll('.btnSave');
+      btnsSave.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          console.log(contentPost.id);
+          const postChange = divPost.querySelector('.editArea').value;
+          console.log(postChange);
+          updatePost(contentPost.id, { post: postChange });
+        });
+      });
+      let clicked = false;
+      const btnsLike = divPost.querySelectorAll('.like');
+      const count = divPost.querySelector('.labelCount');
+      btnsLike.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (!clicked) {
+            clicked = true;
+            // eslint-disable-next-line no-plusplus
+            count.textContent++;
+          } else {
+            clicked = false;
+            // eslint-disable-next-line no-plusplus
+            count.textContent--;
+          }
+        });
+      });
+
       if (contentPost.username !== getUser().displayName) {
         btnDelete.style.display = 'none';
         btnEdit.style.display = 'none';
