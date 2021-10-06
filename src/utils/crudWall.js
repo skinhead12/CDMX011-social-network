@@ -20,6 +20,10 @@ export const loadPosts = async () => {
       postUsername.classList.add('postUn');
       postUsername.textContent = contentPost.username;
 
+      const date = document.createElement('p');
+      date.classList.add('date');
+      date.textContent = `${contentPost.date} ${contentPost.time}`;
+
       const areaPost = document.createElement('p');
       areaPost.classList.add('areaPost');
       areaPost.textContent = contentPost.post;
@@ -38,8 +42,12 @@ export const loadPosts = async () => {
       labelCount.classList.add('labelCount');
 
       const like = document.createElement('button');
-      like.textContent = 'like';
       like.classList.add('like');
+      like.style.display = 'block';
+
+      const likeOn = document.createElement('button');
+      likeOn.classList.add('likeOn');
+      likeOn.style.display = 'none';
 
       const btnSave = document.createElement('button');
       btnSave.classList.add('btnSave');
@@ -48,12 +56,10 @@ export const loadPosts = async () => {
 
       const btnDelete = document.createElement('button');
       btnDelete.classList.add('btnDelete');
-      btnDelete.textContent = 'Eliminar';
       btnDelete.dataset.id = contentPost.id;
 
       const btnEdit = document.createElement('button');
       btnEdit.classList.add('btnEdit');
-      btnEdit.textContent = 'Editar';
       btnEdit.dataset.id = contentPost.id;
 
       const modalContainer = document.createElement('div');
@@ -72,8 +78,8 @@ export const loadPosts = async () => {
       btnMsgCancel.textContent = 'Cancelar';
 
       divPostP.append(divPost);
-      divPost.append(postUsername, areaPost, editArea, divBtns, modalContainer);
-      divBtns.append(labelCount, like, btnDelete, btnEdit, btnSave);
+      divPost.append(postUsername, date, areaPost, editArea, divBtns, modalContainer);
+      divBtns.append(labelCount, like, likeOn, btnDelete, btnEdit, btnSave);
       modalContainer.appendChild(modal);
       modal.append(msgDelete, btnMsgDelete, btnMsgCancel);
       /*     const btnsDelete = divPosts.querySelectorAll('.btnDelete');
@@ -117,12 +123,14 @@ export const loadPosts = async () => {
       const btnsSave = divPost.querySelectorAll('.btnSave');
       btnsSave.forEach((btn) => {
         btn.addEventListener('click', () => {
-          console.log(contentPost.id);
           const postChange = divPost.querySelector('.editArea').value;
-          console.log(postChange);
-          updatePost(contentPost.id, { post: postChange });
+          updatePost(contentPost.id, {
+            post: postChange,
+          });
+          editArea.style.display = 'block';
         });
       });
+
       let clicked = false;
       const btnsLike = divPost.querySelectorAll('.like');
       const count = divPost.querySelector('.labelCount');
@@ -130,12 +138,37 @@ export const loadPosts = async () => {
         btn.addEventListener('click', () => {
           if (!clicked) {
             clicked = true;
+            likeOn.style.display = 'block';
+            like.style.display = 'none';
             // eslint-disable-next-line no-plusplus
             count.textContent++;
           } else {
             clicked = false;
+            likeOn.style.display = 'none';
+            like.style.display = 'block';
             // eslint-disable-next-line no-plusplus
             count.textContent--;
+          }
+        });
+      });
+
+      let clickedOn = true;
+      const btnsLikeOn = divPost.querySelectorAll('.likeOn');
+      const countOn = divPost.querySelector('.labelCount');
+      btnsLikeOn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (!clickedOn) {
+            clickedOn = true;
+            likeOn.style.display = 'block';
+            like.style.display = 'none';
+            // eslint-disable-next-line no-plusplus
+            countOn.textContent++;
+          } else {
+            clickedOn = false;
+            likeOn.style.display = 'none';
+            like.style.display = 'block';
+            // eslint-disable-next-line no-plusplus
+            countOn.textContent--;
           }
         });
       });

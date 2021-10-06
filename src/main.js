@@ -6,6 +6,8 @@ import { Register } from './lib/components/Register.js';
 import { Login } from './lib/components/Login.js';
 // eslint-disable-next-line import/no-cycle
 import { Wall } from './lib/components/wall.js';
+// eslint-disable-next-line no-unused-vars
+import firebase from './lib/secret.js';
 
 const rootDiv = document.getElementById('root');
 
@@ -39,3 +41,11 @@ window.onpopstate = () => {
 };
 
 rootDiv.appendChild(components());
+
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    onNavigate('/wall');
+  } else {
+    onNavigate('/');
+  }
+});

@@ -286,10 +286,63 @@ input::placeholder {
 	color: #E4171D;
 }
 
+.date {
+	position: relative;
+	font-size: 14px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 400;
+	color: #353535;
+}
+
 .areaPost {
 	position: relative;
 	font-size: 14px;
 	font-family: 'Merriweather Sans', sans-serif;
 	font-weight: 400;
 	color: #000000;
+}
+
+.divBtns {
+	display: flex;
+	flex-direction: row;
+}
+
+.like {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/social-network-ba343.appspot.com/o/ritmo-cardiaco.png?alt=media&token=7b66552b-b1e2-4f0e-8a67-51324dfa502f);
+	background-repeat: no-repeat;
+	background-color: white;
+	width: 35px;
+	height: 35px;
+	border-color: none;
+	border-style: none;
+}
+
+.likeOn {
+		background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/ritmo-cardiaco.png?alt=media&token=eaadd91c-4a04-4648-83d6-7c01606fd52e);
+		background-repeat: no-repeat;
+		background-color: white;
+		width: 35px;
+		height: 35px;
+		border-color: none;
+		border-style: none;
+}
+
+.btnDelete {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/bote-de-basura.png?alt=media&token=2b125c44-cbf1-40b1-a6c0-6ba12c4ff53d);
+	background-repeat: no-repeat;
+	background-color: white;
+	width: 35px;
+	height: 35px;
+	border-color: none;
+	border-style: none;
+}
+
+.btnEdit {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/boton-editar.png?alt=media&token=a36271bc-71de-419d-bb5b-84e912df2ed6);
+	background-repeat: no-repeat;
+	background-color: white;
+	width: 35px;
+	height: 40px;
+	border-color: none;
+	border-style: none;
 }

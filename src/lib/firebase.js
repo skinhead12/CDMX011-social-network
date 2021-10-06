@@ -45,13 +45,15 @@ export const getPosts = () => db.collection('posts').get();
 
 export const editPost = (id) => db.collection('posts').doc(id).get(); // obtener de nuevo los datos para editar
 
-export const updatePost = (id, updatePost) => db.collection('posts').doc(id).update(updatePost); // actualizar posts
+export const updatePost = (id, updatedPost) => db.collection('posts').doc(id).update(updatedPost); // actualizar posts
 
 export const onGetPost = (callback) => db.collection('posts').onSnapshot(callback); // obtener datos tiempo real
 
 export const deletePost = (id) => db.collection('posts').doc(id).delete(); // eliminar posts
 
-export const posts = (username, post) => db.collection('posts').add({
+export const posts = (username, date, time, post) => db.collection('posts').add({
   username,
+  date,
+  time,
   post,
 });

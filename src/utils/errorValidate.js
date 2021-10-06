@@ -1,15 +1,24 @@
 export const ErrorValidate = (error) => {
-  let result = '';
-  if (error === 'auth/invalid-email') {
-    result = 'Formato de correo inválido';
-  } else if (error === 'auth/weak-password') {
-    result = 'La contraseña es muy corta';
-  } else if (error === 'auth/email-already-in-use') {
-    result = 'Este usuario ya está registrado';
-  } else if (error === 'auth/wrong-password') {
-    result = 'Contraseña incorrecta';
-  } else if (error === 'auth/user-not-found') {
-    result = 'Este usuario no está registrado';
+  let result;
+  switch (error) {
+    default:
+      result = 'Se ha registrado un error.Intenta de nuevo';
+      break;
+    case 'auth/invalid-email':
+      result = 'Formato de correo inválido';
+      break;
+    case 'auth/weak-password':
+      result = 'La contraseña es muy corta';
+      break;
+    case 'auth/email-already-in-use':
+      result = 'Este usuario ya está registrado';
+      break;
+    case 'auth/wrong-password':
+      result = 'Contraseña incorrecta';
+      break;
+    case 'auth/user-not-found':
+      result = 'Este usuario no está registrado';
+      break;
   }
   return result;
 };
