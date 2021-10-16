@@ -13,6 +13,10 @@ export const Register = () => {
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('buttonBack');
 
+  const imgPin = document.createElement('img');
+  imgPin.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/img-pin-blur.png?alt=media&token=0d881422-8e25-4f68-aa97-60a6061bcf44');
+  imgPin.classList.add('imgPin');
+
   const labelRegister = document.createElement('label');
   labelRegister.textContent = 'Regístrate';
   labelRegister.id = 'labelRegister';
@@ -98,9 +102,7 @@ export const Register = () => {
     }
   });
 
-  buttonGoogleRegister.addEventListener('click', () => {
-    authGoogle(onNavigate);
-  });
+  buttonGoogleRegister.addEventListener('click', () => authGoogle(onNavigate));
 
   buttonRegister.addEventListener('click', (e) => {
     e.preventDefault();
@@ -121,7 +123,7 @@ export const Register = () => {
     return validate;
   });
 
-  Homediv.append(buttonHome, labelRegister, labelSubtitle);
+  Homediv.append(buttonHome, imgPin, labelRegister, labelSubtitle);
   Homediv.appendChild(divFormRegister);
   divFormRegister.append(inputUsername, inputEmail, inputPassword, eyeOn,
     eyeOff, inputPasswordConfirm, buttonRegister, buttonGoogleRegister, imgGoogle, labelErr);

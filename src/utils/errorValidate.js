@@ -2,7 +2,7 @@ export const ErrorValidate = (error) => {
   let result;
   switch (error) {
     default:
-      result = 'Se ha registrado un error.Intenta de nuevo';
+      result = 'Se ha registrado un error. Intenta de nuevo';
       break;
     case 'auth/invalid-email':
       result = 'Formato de correo inválido';

@@ -4,16 +4,16 @@ import { onNavigate } from '../../main.js';
 import { authGoogle } from '../firebase.js';
 
 export const Home = () => {
-  document.body.style.backgroundColor = '#F2B705';
   const Homediv = document.createElement('div');
+  Homediv.style.backgroundColor = '#ffffff';
   Homediv.classList.add('homediv');
 
   const airplane = document.createElement('img');
-  airplane.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/avion.png?alt=media&token=1719248f-44c5-4d22-b32b-664e31992608');
+  airplane.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/airplane-yellow.png?alt=media&token=834352f1-665e-4bb3-8924-d682e786c8ec');
   airplane.id = 'airplane';
 
   const logo = document.createElement('img');
-  logo.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/logo-pata-de-perro.png?alt=media&token=338afd9b-ad90-453b-9007-05416b3dda22');
+  logo.setAttribute('src', 'https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/logo-pata-de-perro-red.png?alt=media&token=dc5ad00d-8d94-4a1b-88a2-1bf72802fb04');
   logo.alt = 'logo pata de perro';
   logo.id = 'logo';
 
@@ -55,6 +55,5 @@ export const Home = () => {
   Homediv.append(airplane, logo, labelWelcome, passport);
   Homediv.appendChild(divButtons);
   divButtons.append(buttonRegister, buttonLogin, labelOr, buttonGoogle, imgGoogle);
-
   return Homediv;
 };

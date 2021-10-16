@@ -12,6 +12,7 @@ export const Wall = () => {
   wallDiv.id = 'wallDiv';
 
   const user = getUser();
+  const exactDate = new Date();
   const date = new Date().toLocaleDateString('es-MX');
   const dateTime = new Date().toLocaleTimeString('es-MX');
   let displayName = '';
@@ -59,7 +60,7 @@ export const Wall = () => {
     const textUser = wallDiv.querySelector('#post').value;
     const newPost = (textUser === '')
       ? errorText.textContent = 'No has escrito nada aún'
-      : posts(user.displayName, date, dateTime, textUser)
+      : posts(user.displayName, exactDate, date, dateTime, textUser)
         .then((result) => {
           wallDiv.querySelector('#post').value = '';
           errorText.textContent = '';
