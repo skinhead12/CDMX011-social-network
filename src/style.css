@@ -1,0 +1,425 @@
+body {
+	overflow-x: hidden;
+}
+
+.homediv, .divFormRegister, .divLogin {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#airplane {
+	position: relative;
+	width: 142px;
+	top: -20px;
+	left: 9rem;
+	margin-bottom: 2px;
+	transform: rotate(20deg);
+}
+
+#logo {
+	width: 200px;
+	margin-bottom: 3rem;
+}
+
+#welcome {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 21px;
+	font-weight: 500;
+	color: #6D6D6D;
+	margin-bottom: 5px;
+}
+
+#passport {
+	position: relative;
+	width: 64.45px;
+	right: 10rem;
+	transform: rotate(-25deg);
+	margin-bottom: 2rem;
+}
+
+.divButtons {
+	position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border-radius: 15px;
+  height: 2rem;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 500;
+	font-size: 13px;
+	letter-spacing: 1px;
+	margin: 18px;
+}
+
+.buttonBack {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/arrow1.png?alt=media&token=2bd8d990-8d6d-4302-82f6-bd7a0980bd6f);
+	background-repeat: no-repeat;
+	position: relative;
+	width: 50px;
+	border-color: none;
+	border-style: none;
+	background-color: white;
+	right: 38%;
+}
+
+#btnRegister, #btnLogin {
+	background-color: #F25040;
+	border-color: none;
+	border-style: none;
+	color: white;
+	width: 210px;
+}
+
+#buttonRegister, #buttonLogin {
+	position: relative;
+	background-color: #F25040;
+	border-color: none;
+	border-style: none;
+	color: white;
+	width: 105px;
+	left: 27%;
+}
+
+#btnGoogle {
+	vertical-align: center;
+	background-color: #ffffff;
+	border: 1px solid #C8C8C8;
+	color: #6D6D6D;
+	width: 210px;
+	padding-left: 2rem;
+}
+
+.imgGoogle {
+	position: absolute;
+	left: 13%;
+	top: 187px;
+}
+
+.imgGoogleLog {
+	position: absolute;
+	left: 22%;
+	top: 233px;
+}
+
+.imgGoogleReg {
+	position: absolute;
+	left: 21%;
+	top: 335px;
+}
+
+#labelO {
+	color: #737373;
+	font-size: 20px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 500;
+}
+
+#eyeOff, #eyeOn {
+	position: absolute;
+	width: 20px;
+	right: 50px;
+	top: 135px;
+	opacity: 0.6;
+}
+
+#eyeOffLogin, #eyeOnLogin {
+	position: absolute;
+	width: 20px;
+	right: 50px;
+	top: 82px;
+	opacity: 0.6;
+}
+
+#labelRegister {
+	font-family: 'Bowlby One', cursive;
+	font-size: 28px;
+	position: relative;
+	right: 28px;
+	top: 50px;
+	color: #F25040;
+}
+
+.labelLogin {
+	font-family: 'Bowlby One', cursive;
+	font-size: 28px;
+	position: relative;
+	left: -2%;
+	top: 45px;
+	color: #F25040;
+}
+
+#labelSub, .subLabel {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-style: italic;
+	font-weight: 400;
+	font-size: 21px;
+	color: #6D6D6D;
+	letter-spacing: 1px;
+	position: relative;
+	top: 60px;
+	right: 10%;
+	margin-bottom: 60px;
+}
+
+.labelErr {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	color: #F25040;
+}
+
+.imgPin {
+	position: absolute;
+	margin-top: 0;
+	top: 15px;
+	width: 50px;
+	left: 82%;
+}
+
+.divFormRegister, .divLogin {
+	border: 1px solid #E3E3E3;
+	border-radius: 15px;
+	box-sizing: border-box;
+	box-shadow: 0 0 15px #e4e4e4;
+	padding: 37px;
+	top: 40px;
+}
+
+input {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid #F25040;
+	margin-bottom: 32px;
+	width: 230px;
+}
+
+input::placeholder {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #AEAEAE;
+	letter-spacing: .5px;
+}
+
+#wallDiv {
+	position: relative;
+  display: flex;
+	flex-flow: column wrap;
+}
+
+.logoWall {
+	position: relative;
+	width: 100px;
+	top: 2rem;
+	margin-left: 48px;
+}
+
+.labelUser {
+	position: relative;
+	font-size: 16px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 500;
+	color: #252525;
+	top: 0;
+	margin-left: auto;
+	margin-right: 48px;
+}
+
+.btnLogOut {
+	position: relative;
+	margin-top: 0;
+	margin-left: auto;
+	margin-right: 38px;
+	border: none;
+	background-color: #ffffff;
+	font-size: 15px;
+	font-family: 'Merriweather Sans', sans-serif;
+	color: #F25040;
+	width: 80px;
+}
+
+.labelWelcome {
+	position: relative;
+	font-family: 'Bowlby One', cursive;
+	font-size: 18px;
+	color: #464646;
+	margin-left: 55px;
+}
+
+#post {
+	width: 257px;
+	height: 90px;
+	border: 1px solid #F25040;
+	padding: 10px;
+	margin-top: 25px;
+	margin-left: 45px;
+	font-family: 'Merriweather Sans', sans-serif;
+	resize: none;
+}
+
+#btnPublish {
+	position: relative;
+	width: 90px;
+	border: none;
+	background-color: #F25040;
+	color: #ffffff;
+	margin-left: 60%;
+}
+
+.btnMsgDelete {
+	position: relative;
+	width: 90px;
+	border: none;
+	background-color: #F25040;
+	color: #ffffff;
+}
+
+.btnMsgCancel {
+	position: relative;
+	width: 90px;
+	border: none;
+	background-color: #36be7a;
+	color: #ffffff;
+}
+
+.divPost {
+	border: 1px solid #E3E3E3;
+	border-radius: 15px;
+	box-sizing: border-box;
+	box-shadow: 0 0 15px #e4e4e4;
+	top: 20px;
+	width: 295px;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 35px;
+	margin-top: 15px;
+}
+
+.postUn {
+	font-size: 16px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 600;
+	color: #E4171D;
+	margin-top: 0;
+}
+
+.date {
+	font-size: 14px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 400;
+	font-style: italic;
+	color: #353535;
+}
+
+.areaPost, .msgDelete {
+	position: relative;
+	font-size: 16px;
+	font-family: 'Merriweather Sans', sans-serif;
+	font-weight: 400;
+	color: #000000;
+}
+
+.divBtns {
+	display: flex;
+	flex-direction: row;
+	margin-left: 20px;
+}
+
+#like {
+	margin: 18px 7px 18px 18px;
+	width: 35px;
+	height: 35px;
+}
+
+.counter {
+	font-family: 'Merriweather Sans', sans-serif;
+	font-size: 12px;
+	margin-top: 18px;
+}
+
+.btnDelete {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/bote-de-basura.png?alt=media&token=2b125c44-cbf1-40b1-a6c0-6ba12c4ff53d);
+	background-repeat: no-repeat;
+	background-color: white;
+	width: 35px;
+	height: 35px;
+	border-color: none;
+	border-style: none;
+}
+
+.btnEdit {
+	background-image: url(https://firebasestorage.googleapis.com/v0/b/pata-de-perro-3a9dd.appspot.com/o/boton-editar.png?alt=media&token=a36271bc-71de-419d-bb5b-84e912df2ed6);
+	background-repeat: no-repeat;
+	background-color: white;
+	width: 35px;
+	height: 40px;
+	border-color: none;
+	border-style: none;
+}
+
+.editArea {
+	width: 240px;
+	resize: none;
+	height: 60px;
+	border-radius: 5px;
+	border-color: #737373;
+}
+
+.btnSave {
+	position: relative;
+	width: 90px;
+	border: none;
+	background-color: #F25040;
+	color: #ffffff;
+	margin-left: 60px;
+}
+
+.btnCancelEdit {
+	width: 90px;
+	border: none;
+	background-color: #36be7a;
+	color: #ffffff;
+	margin-left: 0;
+}
+
+.modalContainer {
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	pointer-events: none;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.modalContainer.show {
+	pointer-events: auto;
+	opacity: 1;
+}
+
+.modal {
+	background-color: white;
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	padding: 20px;
+	width: 210px;
+	max-width: 100%;
+	text-align: center;
+	margin-top: 50%;
+	margin-left: 65px;
+}
